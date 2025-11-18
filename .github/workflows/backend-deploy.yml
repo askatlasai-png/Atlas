@@ -12,46 +12,44 @@ env:
   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
 
 jobs:
-build-and-push:
-  runs-on: ubuntu-latest
+  build-and-push:
+    runs-on: ubuntu-latest
 
-  outputs:
-    image_uri: ${{ steps.build_image.outputs.image_uri }}
+    outputs:
+      image_uri: ${{ steps.build-image.outputs.image_uri }}
 
-  steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
 
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v2
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Build, tag, and push image to ECR
-      id: build_image
-      env:
-        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG: ${{ github.sha }}
-      run: |
-        cd backend
-        IMAGE_URI=$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
+      - name: Build, tag, and push image to ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          cd backend
+          IMAGE_URI=$ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG
 
-        echo "Building image $IMAGE_URI"
-        docker build -t $IMAGE_URI .
+          echo "Building image $IMAGE_URI"
+          docker build -t $IMAGE_URI .
 
-        echo "Pushing image $IMAGE_URI"
-        docker push $IMAGE_URI
+          echo "Pushing image $IMAGE_URI"
+          docker push $IMAGE_URI
 
-        # Set both step and job outputs
-        echo "::set-output name=image_uri::$IMAGE_URI"
-        echo "image_uri=$IMAGE_URI" >> $GITHUB_OUTPUT
-
+          # define step output `image_uri`
+          echo "image_uri=$IMAGE_URI" >> $GITHUB_OUTPUT
 
   deploy-stage:
     needs: build-and-push
