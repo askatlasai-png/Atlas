@@ -66,7 +66,7 @@ export default function BehindAtlas() {
             </a>
 
             <a
-              href="https://github.com/your-github-here"
+              href="https://github.com/askatlasai-png/Atlas"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white/80 px-3 py-1.5 text-slate-700 shadow-sm hover:bg-slate-50 transition-colors"
