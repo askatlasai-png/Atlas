@@ -1,0 +1,10 @@
+{
+  "PO": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_po_status_enriched\\v_po_status_enriched.csv",
+  "ONHAND": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_onhand_status_enriched\\v_onhand_status_enriched.csv",
+  "IR": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_ir_status_enriched\\v_ir_status_enriched.csv",
+  "SO": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_so_delivery_status_enriched\\v_so_delivery_status_enriched.csv",
+  "LPN": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_lpn_status_se_enriched\\v_lpn_status_se_enriched.csv",
+  "LPN_SERIAL": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_lpn_serials_se_enriched\\v_lpn_serials_se_enriched.csv",
+  "LPN_SERIALS": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\idx_v_lpn_serials_se_enriched\\v_lpn_serials_se_enriched.csv",
+  "LPN_SERIALS_AGG": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\idx_v_lpn_serials_agg_se_enriched\\v_lpn_serials_agg_se_enriched.csv"
+}

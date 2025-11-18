@@ -1,0 +1,67 @@
+# app/main.py
+from fastapi import FastAPI, Request, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional
+from dotenv import load_dotenv, find_dotenv
+import os, traceback
+from .multi_rag_cli import run_multi_rag  # adjust if needed
+
+load_dotenv(find_dotenv(), override=False)
+
+app = FastAPI(title="Atlas Backend", version="1.0")
+
+ALLOW_ORIGINS = [o.strip() for o in os.getenv("ALLOW_ORIGINS","").split(",") if o.strip()]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOW_ORIGINS or ["http://localhost:5174","http://127.0.0.1:5174"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],  # includes X-Atlas-Key
+)
+
+class ChatReq(BaseModel):
+    question: str
+    session: Optional[str] = "public"
+    preview: Optional[bool] = False
+
+DEBUG = os.getenv("DEBUG", "0") == "1"
+
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok"}
+
+# @app.post("/api/chat")
+# async def chat_api(req: ChatReq, x_atlas_key: Optional[str] = Header(default=None, alias="X-Atlas-Key")):
+#     # TODO: call your real RAG pipeline here; for now echo+dummy context
+#     q = req.question or ""
+#     answer_text = your_rag_fn(q, session=req.session, preview=req.preview, api_key=x_atlas_key)
+#     #answer_text = f"Echo: {q}"
+#     context_text = "(demo) no retrieved context yet"
+#     return {"answer": answer_text, "context": context_text}
+
+
+@app.post("/api/chat")
+async def chat_api(req: ChatReq, x_atlas_key: Optional[str] = Header(default=None, alias="X-Atlas-Key")):
+    try:
+        # TODO: plug your real pipeline here
+        # answer_text, context_text = run_multi_rag(
+        #     question=req.question, session=req.session, preview=req.preview, api_key=x_atlas_key
+        # )
+        # For now, quick sanity:
+        answer_text, context_text = run_multi_rag(
+            question=req.question,
+            session=req.session,
+            preview=req.preview
+        )
+        return {"answer": answer_text, "context": context_text}
+
+    except Exception as e:
+        tb = traceback.format_exc()
+        print("\n=== chat_api ERROR ===\n", tb)
+        msg = f"{e.__class__.__name__}: {e}"
+        if DEBUG:
+            # In dev, show details in UI so we can diagnose fast
+            return {"answer": f"[DEV] {msg}", "context": tb}
+        # In prod, return a proper 500
+        raise HTTPException(status_code=500, detail="chat_api error")

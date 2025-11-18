@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas – Portfolio Deck (Preview)</title>
+<style>
+  :root{
+    --blue:#0a2342; /* Midnight Blue */
+    --gray:#5c677d; /* Steel Gray */
+    --teal:#00bfa6; /* Teal */
+    --bg1:#f7fbff;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background: radial-gradient(1000px 700px at 20% 30%, rgba(59,130,246,0.12), transparent 60%),
+                radial-gradient(900px 600px at 80% 70%, rgba(0,191,166,0.12), transparent 60%),
+                #ffffff;
+    color:var(--blue);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  }
+  .deck{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+  }
+  .nav{
+    display:flex; gap:8px; justify-content:center; margin:14px 0 20px;
+  }
+  .nav button{
+    background:#fff; border:1px solid #e6eef7; color:var(--blue);
+    padding:8px 12px; border-radius:10px; cursor:pointer;
+    box-shadow:0 4px 12px rgba(10,35,66,.06);
+  }
+  .slides{
+    position:relative;
+    aspect-ratio:16/9;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 18px 60px rgba(10,35,66,.20), 0 6px 20px rgba(0,0,0,.06);
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute; inset:0; padding:48px 64px;
+    display:none;
+    background:
+      radial-gradient(900px 600px at 25% 20%, rgba(59,130,246,0.10), transparent 60%),
+      radial-gradient(800px 520px at 80% 75%, rgba(0,191,166,0.10), transparent 60%),
+      #ffffff;
+  }
+  .slide.active{display:block; animation:fade .28s ease-out}
+  @keyframes fade{from{opacity:.0; transform:translateY(6px)} to{opacity:1; transform:none}}
+
+  /* Common elements */
+  .wordmark{
+    font-weight:800; letter-spacing:.3px; display:inline-flex; align-items:baseline; gap:2px;
+    font-size:28px;
+  }
+  .wordmark .a{ color:var(--teal); text-decoration:underline; text-underline-offset:4px }
+  .wordmark .rest{ color:var(--blue) }
+  .title{ font-size:44px; font-weight:800; margin:22px 0 10px; line-height:1.15; color:var(--blue) }
+  .tagline{ font-size:20px; color:var(--gray); margin: 8px 0 14px; text-align:center }
+  .underline{ width:160px; height:5px; background:var(--teal); border-radius:6px; margin:14px auto 0 }
+  .byline{ position:absolute; left:0; right:0; bottom:34px; text-align:center; color:var(--gray); font-size:16px }
+
+  .section-title{
+    font-size:34px; font-weight:800; color:var(--blue); margin: 8px 0 18px;
+  }
+  .section-underline{ width:120px; height:4px; background:var(--teal); border-radius:6px; margin: 10px 0 20px }
+  .bullets{ margin:0; padding-left:20px; color:var(--gray); font-size:20px; line-height:1.6 }
+  .bullets li{ margin:8px 0 }
+
+  /* Controls */
+  .controls{
+    position:absolute; inset:0; display:flex; justify-content:space-between; align-items:center; pointer-events:none;
+  }
+  .controls button{
+    pointer-events:auto;
+    background:#fff; border:1px solid #e6eef7; color:var(--blue);
+    width:44px; height:44px; border-radius:50%; display:grid; place-items:center;
+    box-shadow:0 10px 30px rgba(10,35,66,.12);
+    margin: 0 14px;
+    cursor:pointer;
+  }
+  .dots{ position:absolute; bottom:16px; left:0; right:0; display:flex; justify-content:center; gap:8px }
+  .dot{ width:10px; height:10px; border-radius:50%; background:#d9e3ee }
+  .dot.active{ background:var(--teal) }
+  .footer-note{ text-align:center; color:var(--gray); font-size:12px; margin-top:10px }
+</style>
+</head>
+<body>
+  <div class="deck">
+    <div class="nav">
+      <button onclick="go(0)">Cover</button>
+      <button onclick="go(1)">Challenge</button>
+      <button onclick="go(2)">Vision</button>
+    </div>
+
+    <div class="slides" id="slides">
+      <!-- Slide 1: Cover -->
+      <section class="slide active">
+        <div class="wordmark" aria-label="Atlas wordmark">
+          <span class="a">A</span><span class="rest">tlas</span>
+        </div>
+        <h1 class="title" style="text-align:center;">Atlas – AI Copilot for ERP &amp; Supply Chain Systems</h1>
+        <p class="tagline">Making enterprise operations faster, simpler, and more human.</p>
+        <div class="underline" aria-hidden="true"></div>
+        <div class="byline">Naga Chaganti — AI + Supply Chain Solution Architect</div>
+      </section>
+
+      <!-- Slide 2: Challenge -->
+      <section class="slide">
+        <div class="section-title">The Challenge</div>
+        <div class="section-underline"></div>
+        <ul class="bullets">
+          <li>ERP &amp; supply-chain users spend hours navigating screens and reports for basic answers.</li>
+          <li>Steep learning curves reduce adoption and slow decision-making.</li>
+          <li>Context is scattered across POs, inventory, shipments, and supplier performance.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3: Vision -->
+      <section class="slide">
+        <div class="section-title">The Vision</div>
+        <div class="section-underline"></div>
+        <ul class="bullets">
+          <li>Ask ERP questions in plain language — get clear, actionable answers.</li>
+          <li>Bring together RAG + vector search + ERP schema knowledge for context-aware insights.</li>
+          <li>Make enterprise operations feel intuitive, responsive, and human-centered.</li>
+        </ul>
+      </section>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button onclick="prev()" aria-label="Previous slide">‹</button>
+        <button onclick="next()" aria-label="Next slide">›</button>
+      </div>
+      <div class="dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <div class="footer-note">Preview · 16:9 · Atlas Portfolio Deck · Dual‑tone wordmark · Midnight Blue · Steel Gray · Teal</div>
+  </div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  let idx = 0;
+  function show(i){
+    slides.forEach((s,k)=>s.classList.toggle('active', k===i));
+    dots.forEach((d,k)=>d.classList.toggle('active', k===i));
+    idx = i;
+  }
+  function next(){ show((idx+1)%slides.length); }
+  function prev(){ show((idx-1+slides.length)%slides.length); }
+  function go(i){ show(i); }
+  document.addEventListener('keydown', (e)=>{
+    if(e.key==='ArrowRight') next();
+    if(e.key==='ArrowLeft') prev();
+  });
+</script>
+</body>
+</html>

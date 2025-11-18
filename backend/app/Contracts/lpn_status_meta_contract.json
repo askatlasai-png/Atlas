@@ -1,0 +1,32 @@
+{
+  "name": "atlas_lpn_status_metadata",
+  "version": "1.0.1",
+  "process_area": "Logistics",
+  "source": "LPN",
+  "primary_key": ["lpn_number"],
+  "meta_map": {
+    "Primary_ID": "lpn_number",
+    "Secondary_ID": "delivery_number",
+    "Delivery_ID": "delivery_id",
+    "Tracking_Number": "tracking_number",
+    "Item": "item",
+    "Qty": "shipped_quantity",
+    "Actor": "carrier_name",
+    "Site": "organization_id",
+    "Org": "organization_id",
+    "Promised_Date": null,
+    "Actual_Date": "creation_date",
+    "Status": "delivery_status"
+  },
+  "computed": ["Month"],
+  "use_existing_flags": ["SLA_Flag", "Process_Area", "Root_Cause_Tag"],
+  "defaults": {
+    "SLA_Flag": "UNKNOWN"
+  },
+  "notes": [
+    "Tracking_Number added for shipment traceability.",
+    "Qty uses shipped_quantity if available, fallback to requested_quantity.",
+    "Creation_date used as Actual_Date; Month derived from it.",
+    "Carrier_Name used as Actor; Process_Area and SLA_Flag preserved."
+  ]
+}

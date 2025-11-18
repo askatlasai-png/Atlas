@@ -1,0 +1,11 @@
+{
+  "LPN_SERIAL": "app/Data/rag_store/LPN_SERIAL",
+  "LPN_SERIALS": "app/Data/rag_store/LPN_SERIAL",
+  "LPN_SERIALS_AGG": "app/Data/rag_store/LPN_SERIALS_AGG",
+  "LPN": "app/Data/rag_store/LPN",
+  "PO": "app/Data/rag_store/PO",
+  "SO": "app/Data/rag_store/SO",
+  "IR": "app/Data/rag_store/IR",
+  "ONHAND": "app/Data/rag_store/ONHAND"
+}
+

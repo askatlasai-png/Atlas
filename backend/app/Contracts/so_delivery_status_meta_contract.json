@@ -1,0 +1,37 @@
+{
+  "name": "atlas_so_delivery_status_metadata",
+  "version": "1.1.0",
+  "process_area": "Sales",
+  "source": "SO",
+  "primary_key": ["so_number", "so_line_id"],
+  "meta_map": {
+    "Primary_ID": "so_number",
+    "Secondary_ID": "so_line_id",
+    "Delivery_ID": "delivery_number",
+    "Tracking_Number": "tracking_number",
+    "Carrier": "carrier_name",
+    "Ship_From": "ship_from",
+    "Ship_To": "ship_to",
+    "Customer_Or_Site_Name": "customer_or_site_name",
+    "Ordered_By": "ordered_by_user_id",
+    "Item": "item_number",
+    "Qty": "ordered_qty",
+    "Shipped_Qty": "shipped_qty",
+    "Promised_Date": "promised_date",
+    "Actual_Date": "shipped_date",
+    "Status": "delivery_status",
+    "Site": "organization_id",
+    "Org": "organization_id",
+    "LPN_List": "lpn_list"
+  },
+  "computed": ["Delay_Days", "Month", "SLA_Flag"],
+  "use_existing_flags": ["SLA_Flag", "Process_Area", "Root_Cause_Tag"],
+  "defaults": {
+    "SLA_Flag": "UNKNOWN"
+  },
+  "notes": [
+    "Delay_Days = Actual_Date - Promised_Date; SLA_BREACH if > 0.",
+    "LPN_List is expected as a CSV string of LPNs when available.",
+    "Ship_From/Ship_To can be IDs or names depending on the source system."
+  ]
+}

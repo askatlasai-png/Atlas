@@ -1,0 +1,32 @@
+v_lpn_serials_agg{
+  "name": "atlas_lpn_serials_agg_metadata",
+  "version": "1.0.2",
+  "process_area": "Logistics",
+  "source": "LPN_SERIALS_AGG",
+  "primary_key": ["lpn_number"],
+  "meta_map": {
+    "Primary_ID": "lpn_number",
+    "Secondary_ID": "delivery_number",
+    "Item": null,
+    "Qty": "serial_count",
+    "Serials": "serials_csv",
+    "Asset_Tags": "asset_tags",
+    "Actor": "requested_by_user_id",
+    "Site": null,
+    "Org": null,
+    "Promised_Date": null,
+    "Actual_Date": "creation_date",
+    "Status": null
+  },
+  "computed": ["Month"],
+  "use_existing_flags": ["SLA_Flag", "Process_Area", "Root_Cause_Tag"],
+  "defaults": {
+    "SLA_Flag": "UNKNOWN"
+  },
+  "notes": [
+    "Derived from v_lpn_serials_agg_se_enriched.csv.",
+    "Each row aggregates all serials under one LPN.",
+    "Includes serials_csv and asset_tags for detailed traceability.",
+    "creation_date is treated as Actual_Date; no delay/SLA computation."
+  ]
+}

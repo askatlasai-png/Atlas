@@ -1,0 +1,11 @@
+{
+  "PO": "app/Data/idx_v_po_status_enriched/v_po_status_enriched.csv",
+  "ONHAND": "app/Data/idx_v_onhand_status_enriched/v_onhand_status_enriched.csv",
+  "IR": "app/Data/idx_v_ir_status_enriched/v_ir_status_enriched.csv",
+  "SO": "app/Data/idx_v_so_delivery_status_enriched/v_so_delivery_status_enriched.csv",
+  "LPN": "app/Data/idx_v_lpn_status_se_enriched/v_lpn_status_se_enriched.csv",
+  "LPN_SERIAL": "app/Data/idx_v_lpn_serials_se_enriched/v_lpn_serials_se_enriched.csv",
+  "LPN_SERIALS": "app/Data/idx_v_lpn_serials_se_enriched/v_lpn_serials_se_enriched.csv",
+  "LPN_SERIALS_AGG": "app/Data/idx_v_lpn_serials_agg_se_enriched/v_lpn_serials_agg_se_enriched.csv"
+}
+

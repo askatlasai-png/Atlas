@@ -1,0 +1,10 @@
+{
+  "LPN_SERIAL": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\LPN_SERIAL",
+  "LPN_SERIALS": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\LPN_SERIAL",
+  "LPN_SERIALS_AGG": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\LPN_SERIALS_AGG",
+  "LPN": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\LPN",
+  "PO": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\PO",
+  "SO": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\SO",
+  "IR": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\IR",
+  "ONHAND": "C:\\code\\atlas-erp-chat-v1 - Copy\\backend\\app\\Data\\rag_store\\ONHAND"
+}

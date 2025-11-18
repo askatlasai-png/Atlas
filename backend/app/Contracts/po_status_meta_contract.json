@@ -1,0 +1,29 @@
+{
+  "name": "atlas_po_status_metadata",
+  "version": "1.1.0",
+  "process_area": "Procurement",
+  "source": "PO",
+  "primary_key": ["po_number", "line_location_id"],
+  "meta_map": {
+    "Primary_ID": "po_number",
+    "Secondary_ID": "line_location_id",
+    "Actor": "supplier_name",
+    "Buyer_User_Id": "buyer_user_id",
+    "Item": "item_number",
+    "Qty": "quantity_ordered",
+    "Received_Qty": "quantity_received",
+    "Promised_Date": "promised_date",
+    "Need_By_Date": "need_by_date",
+    "Actual_Date": "delivered_date",
+    "Status": "po_status",
+    "Site": "ship_to_location",
+    "Org": "organization_id"
+  },
+  "computed": ["Delay_Days", "Month", "SLA_Flag"],
+  "use_existing_flags": ["SLA_Flag", "Process_Area", "Root_Cause_Tag"],
+  "defaults": { "SLA_Flag": "UNKNOWN" },
+  "notes": [
+    "Delay_Days = Actual_Date - Promised_Date when both exist; SLA_BREACH if > 0.",
+    "Need_By_Date is kept explicitly in addition to Promised_Date."
+  ]
+}

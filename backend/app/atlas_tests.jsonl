@@ -1,0 +1,42 @@
+﻿{"q":"Show inventory detail for site 101","cols":["organization_id","item","onhand_qty","available_qty"],"checks":[["unique_eq","organization_id","101"],["non_negative","available_qty"],["has_cols","organization_id","item","onhand_qty","available_qty"]]}
+{"q":"Show items at site 101 sorted by available descending","cols":["organization_id","item","available_qty","onhand_qty"],"checks":[["unique_eq","organization_id","101"],["sorted_desc","available_qty"]]}
+{"q":"Totals by site (onhand & available) sorted by available descending","cols":["organization_id","item","onhand_qty","available_qty"],"checks":[["unique_keys","organization_id","item"],["non_negative","onhand_qty"],["non_negative","available_qty"]]}
+{"q":"Show inventory detail for site 102","cols":["organization_id","item","onhand_qty","available_qty"],"checks":[["unique_eq","organization_id","102"],["has_cols","organization_id","item","onhand_qty","available_qty"]]}
+{"q":"Show items at site 102 sorted by available descending","cols":["organization_id","item","available_qty","onhand_qty"],"checks":[["unique_eq","organization_id","102"],["sorted_desc","available_qty"]]}
+{"q":"Show inventory detail for site 103","cols":["organization_id","item","onhand_qty","available_qty"],"checks":[["unique_eq","organization_id","103"]]}
+{"q":"Show items at site 103 sorted by onhand descending","cols":["organization_id","item","onhand_qty"],"checks":[["unique_eq","organization_id","103"],["sorted_desc","onhand_qty"]]}
+{"q":"Show items at site 201 sorted by available descending","cols":["organization_id","item","available_qty"],"checks":[["unique_eq","organization_id","201"],["sorted_desc","available_qty"]]}
+{"q":"Show items at site 301 sorted by available descending","cols":["organization_id","item","available_qty"],"checks":[["unique_eq","organization_id","301"],["sorted_desc","available_qty"]]}
+
+{"q":"Top 10 orgs by on-hand descending","cols":["organization_id","onhand_qty"],"checks":[["count_le","10"],["sorted_desc","onhand_qty"],["has_cols","organization_id","onhand_qty"]]}
+{"q":"On-hand totals by organization","cols":["organization_id","onhand_qty"],"checks":[["unique_keys","organization_id"],["non_negative","onhand_qty"]]}
+{"q":"Available totals by organization","cols":["organization_id","available_qty"],"checks":[["unique_keys","organization_id"],["non_negative","available_qty"]]}
+{"q":"Show items at site 101 sorted by item ascending","cols":["organization_id","item"],"checks":[["unique_eq","organization_id","101"],["sorted_asc","item"]]}
+{"q":"Show items at site 102 sorted by item ascending","cols":["organization_id","item"],"checks":[["unique_eq","organization_id","102"],["sorted_asc","item"]]}
+{"q":"Total on-hand by site sorted by onhand descending","cols":["organization_id","onhand_qty"],"checks":[["unique_keys","organization_id"],["sorted_desc","onhand_qty"]]}
+{"q":"Total available by site sorted by available descending","cols":["organization_id","available_qty"],"checks":[["unique_keys","organization_id"],["sorted_desc","available_qty"]]}
+{"q":"Show items at site 101 sorted by available ascending","cols":["organization_id","item","available_qty"],"checks":[["unique_eq","organization_id","101"],["sorted_asc","available_qty"]]}
+
+{"q":"Show delivery status counts sorted by so_number descending","cols":["delivery_status","so_number"],"checks":[["sorted_desc","so_number"],["has_cols","delivery_status","so_number"]]}
+{"q":"Delivery status counts","cols":["delivery_status","so_number"],"checks":[["unique_keys","delivery_status"],["non_negative","so_number"]]}
+{"q":"Show delivery status counts sorted by so_number ascending","cols":["delivery_status","so_number"],"checks":[["sorted_asc","so_number"]]}
+
+{"q":"PO-0000173 sorted by promised date descending","cols":["po_number","promised_date"],"checks":[["has_cols","po_number","promised_date"],["count_ge","1"]]}
+{"q":"PO-0000173","cols":["po_number","item","organization_id","ordered_qty","received_qty"],"checks":[["has_cols","po_number","item","organization_id","ordered_qty","received_qty"]]}
+{"q":"Show PO lines for PO-0000173 sorted by need by date ascending","cols":["po_number","need_by_date"],"checks":[["sorted_asc","need_by_date"],["count_ge","1"]]}
+
+{"q":"Inventory vs open PO by item at site 101","cols":["organization_id","item","onhand_qty","available_qty","ordered_qty","received_qty","open_qty"],"checks":[["unique_eq","organization_id","101"],["has_cols","ordered_qty","received_qty","open_qty"]]}
+{"q":"Inventory vs open PO by item at site 102","cols":["organization_id","item","onhand_qty","available_qty","ordered_qty","received_qty","open_qty"],"checks":[["unique_eq","organization_id","102"],["has_cols","ordered_qty","received_qty","open_qty"]]}
+{"q":"Inventory vs open PO by item at site 103","cols":["organization_id","item","onhand_qty","available_qty","ordered_qty","received_qty","open_qty"],"checks":[["unique_eq","organization_id","103"],["has_cols","ordered_qty","received_qty","open_qty"]]}
+{"q":"Inventory vs open PO by item at site 201","cols":["organization_id","item","onhand_qty","available_qty","ordered_qty","received_qty","open_qty"],"checks":[["unique_eq","organization_id","201"],["has_cols","ordered_qty","received_qty","open_qty"]]}
+{"q":"Inventory vs open PO by item at site 301","cols":["organization_id","item","onhand_qty","available_qty","ordered_qty","received_qty","open_qty"],"checks":[["unique_eq","organization_id","301"],["has_cols","ordered_qty","received_qty","open_qty"]]}
+
+{"q":"Show inventory detail (no site filter)","cols":["organization_id","item","onhand_qty","available_qty"],"checks":[["has_cols","organization_id","item","onhand_qty","available_qty"],["count_ge","50"]]}
+{"q":"Totals by site and item sorted by available descending","cols":["organization_id","item","available_qty"],"checks":[["sorted_desc","available_qty"],["has_cols","organization_id","item","available_qty"]]}
+{"q":"Totals by site and item sorted by onhand descending","cols":["organization_id","item","onhand_qty"],"checks":[["sorted_desc","onhand_qty"]]}
+{"q":"Totals by site (onhand & available) sorted by available descending","cols":["organization_id","available_qty"],"checks":[["sorted_desc","available_qty"],["unique_keys","organization_id"]]}
+{"q":"Totals by site (onhand & available) sorted by onhand descending","cols":["organization_id","onhand_qty"],"checks":[["sorted_desc","onhand_qty"],["unique_keys","organization_id"]]}
+{"q":"Show items at site 101 ","cols":["organization_id","item","onhand_qty"],"checks":[["unique_eq","organization_id","101"],["non_negative","onhand_qty"]]}
+{"q":"Show items at site 101 ","cols":["organization_id","item","available_qty"],"checks":[["unique_eq","organization_id","101"],["non_negative","available_qty"]]}
+{"q":"Show items at site 101 ","cols":["organization_id","item"],"checks":[["unique_eq","organization_id","101"],["no_nulls","item"]]}
+{"q":"Show items at site 101 ","cols":["organization_id","item"],"checks":[["no_nulls","organization_id"]]}

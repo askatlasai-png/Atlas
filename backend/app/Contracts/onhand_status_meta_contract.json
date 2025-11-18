@@ -1,0 +1,31 @@
+{
+  "name": "atlas_onhand_status_metadata",
+  "version": "1.1.0",
+  "process_area": "Inventory",
+  "source": "ONHAND",
+  "primary_key": ["item_number"],
+  "meta_map": {
+    "Primary_ID": "item_number",
+    "Secondary_ID": "subinventory_code",
+    "Item": "item_number",
+    "Qty": "onhand_qty",
+    "Available_Qty": "available_qty",
+    "Reserved_Qty": "reserved_qty",
+    "Site": "organization_id",
+    "Locator": "locator_code",
+    "Org": "organization_id",
+    "Actual_Date": "last_update_date",
+    "Status": "onhand_status"
+  },
+  "computed": ["Month"],
+  "use_existing_flags": ["SLA_Flag", "Process_Area", "Root_Cause_Tag"],
+  "defaults": {
+    "SLA_Flag": "UNKNOWN",
+    "Status": "ONHAND"
+  },
+  "notes": [
+    "Maps to subinventory_code/locator_code/last_update_date per enriched CSV.",
+    "Includes Reserved_Qty so downstream aggregation works.",
+    "Month derived from Actual_Date."
+  ]
+}

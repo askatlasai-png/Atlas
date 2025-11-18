@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-move {
+  animation: gradient-move 3s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 1.5s ease-in-out infinite;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(203,213,225,0.6);
+  background: rgba(255,255,255,0.6);
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  background: white;
+  border-color: rgba(203,213,225,1);
+}
+
+@media (min-width: 640px) {
+  .nav-link {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(to right, #2563eb, #0ea5e9, #14b8a6);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+}
+
+

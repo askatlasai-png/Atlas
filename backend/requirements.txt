@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-dotenv
+boto3
+openai
+langchain
+langchain-community
+langchain-openai
+mangum
+numpy
+faiss-cpu
+pandas
